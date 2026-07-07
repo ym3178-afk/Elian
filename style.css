@@ -1,129 +1,239 @@
-/* Import Google Fonts - this loads the Roboto font family from Google's servers */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap');
 
-/* Style the entire body of the webpage */
-body {
-  font-family: 'Roboto', sans-serif;  /* Set the font to Roboto, with sans-serif as backup */
-  background: linear-gradient(135deg, #ff69b4, #ffff00);  /* Gradient from pink to yellow */
-  color: #111;                        /* Set text color to dark gray (almost black) */
-  margin: 0;                          /* Remove default spacing around the body */
-  padding: 0;                         /* Remove default internal spacing */
-  min-height: 100vh;                  /* Ensure gradient covers full viewport height */
+* { box-sizing: border-box; }
+
+:root{
+  --paper:#E8D8B8;
+  --paper-light:#F1E7CF;
+  --old-paper:#C8AD7A;
+  --ink:#2A201A;
+  --deep:#0B1210;
+  --deep2:#14231F;
+  --deep3:#1C302A;
+  --red:#7F2628;
+  --red2:#A33A32;
+  --brass:#A57936;
+  --brass-light:#D1A75C;
+  --teal:#839C96;
+  --muted:#BFAE86;
 }
 
-/* Style the header section at the top of the page */
-header {
-  display: flex;                      /* Use flexbox layout for flexible positioning */
-  justify-content: space-between;     /* Spread items evenly across the header */
-  align-items: center;                /* Center items vertically */
-  padding: 24px 40px;                 /* Add 24px top/bottom, 40px left/right spacing inside */
-  border-bottom: 1px solid #ccc;      /* Add a light gray line at the bottom */
-  font-size: 14px;                    /* Set font size to 14 pixels */
+html{ scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  background:
+    radial-gradient(circle at 14% 10%, rgba(209,167,92,.15), transparent 25%),
+    radial-gradient(circle at 78% 36%, rgba(127,38,40,.12), transparent 30%),
+    radial-gradient(circle at 88% 62%, rgba(20,35,31,.9), transparent 42%),
+    linear-gradient(180deg,#0B1210 0%,#111A17 47%,#070B0A 100%);
+  color:var(--paper);
+  font-family: Georgia, "Times New Roman", "Noto Serif SC", serif;
 }
 
-/* Style the left section of the header */
-header .left {
-  color: #aaa;                        /* Set text color to light gray */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(rgba(232,216,184,.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(232,216,184,.018) 1px, transparent 1px),
+    radial-gradient(circle,rgba(232,216,184,.10) 0 1px,transparent 1.5px);
+  background-size:44px 44px,44px 44px,27px 27px;
+  opacity:.22;
+  mix-blend-mode:soft-light;
+  z-index:10;
 }
 
-/* Style the center section of the header */
-header .center {
-  font-weight: 400;                   /* Set font weight to normal (not bold) */
-  text-align: center;                 /* Center the text horizontally */
+.nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  display:flex;
+  align-items:center;
+  gap:22px;
+  padding:18px 7vw;
+  background:rgba(8,13,12,.78);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(165,121,54,.28);
 }
 
-/* Style the span element inside the center section */
-header .center span {
-  font-size: 12px;                    /* Make this text smaller (12 pixels) */
-  color: #888;                        /* Set text color to medium gray */
+.nav strong{
+  margin-right:auto;
+  font-weight:400;
+  letter-spacing:.8px;
 }
 
-/* Style links in the right section of the header */
-header .right a {
-  color: #000;                        /* Set link color to black */
-  text-decoration: none;              /* Remove the underline from links */
-  font-weight: 400;                   /* Set font weight to normal */
+.nav a{
+  color:rgba(232,216,184,.68);
+  text-decoration:none;
+  text-transform:uppercase;
+  letter-spacing:1.4px;
+  font-size:10.5px;
 }
 
-/* Style the main content area */
-main {
-  max-width: 800px;                   /* Limit the maximum width to 800 pixels */
-  margin: 60px auto;                  /* Add 60px top/bottom margin, center horizontally */
-  padding: 0 20px;                    /* Add 20px left/right padding, no top/bottom */
+.nav a:hover{ color:var(--paper-light); }
+
+.hero{
+  min-height:96vh;
+  padding:76px 7vw 96px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  color:#241B16;
+  background:
+    radial-gradient(circle at 72% 24%, rgba(241,231,207,.58), transparent 22%),
+    radial-gradient(circle at 20% 75%, rgba(127,38,40,.28), transparent 32%),
+    linear-gradient(135deg,#E8D8B8 0%,#C8A463 38%,#152721 100%);
+  border-bottom:1px solid rgba(165,121,54,.75);
+  position:relative;
+  overflow:hidden;
 }
 
-/* Style the project year/date */
-.project-meta {
-  font-size: 14px;                    /* Set font size to 14 pixels */
-  color: #999;                        /* Set text color to light gray */
-  margin-bottom: 8px;                 /* Add 8 pixels of space below this element */
+.hero::after{
+  content:"";
+  position:absolute;
+  right:7vw;
+  bottom:10vh;
+  width:260px;
+  height:260px;
+  border:1px solid rgba(42,32,26,.22);
+  border-radius:50%;
+  background:
+    radial-gradient(circle, rgba(127,38,40,.20) 0 18%, transparent 19%),
+    radial-gradient(circle, transparent 0 58%, rgba(42,32,26,.18) 59% 60%, transparent 61%);
+  transform:rotate(-12deg);
 }
 
-/* Style the main project title */
-.project-title {
-  font-size: 24px;                    /* Set font size to 24 pixels (larger) */
-  font-weight: 400;                   /* Set font weight to normal (not bold) */
-  margin-bottom: 4px;                 /* Add 4 pixels of space below this element */
+.eyebrow{
+  margin:0 0 36px;
+  letter-spacing:2.2px;
+  text-transform:uppercase;
+  font-size:13px;
+  position:relative;
+  z-index:2;
 }
 
-/* Style the project subtitle */
-.project-subtitle {
-  font-size: 16px;                    /* Set font size to 16 pixels */
-  color: #999;                        /* Set text color to light gray */
-  margin-bottom: 24px;                /* Add 24 pixels of space below this element */
+h1{
+  margin:0;
+  font-size:clamp(78px,13vw,180px);
+  line-height:.76;
+  letter-spacing:-8px;
+  font-weight:400;
+  position:relative;
+  z-index:2;
 }
 
-/* Style the advisor information */
-.advisor {
-  font-size: 14px;                    /* Set font size to 14 pixels */
-  margin-bottom: 40px;                /* Add 40 pixels of space below this element */
-  color: #333;                        /* Set text color to dark gray */
+.intro{
+  max-width:850px;
+  margin-top:38px;
+  font-size:19px;
+  line-height:1.72;
+  position:relative;
+  z-index:2;
 }
 
-/* Style section titles (like "Abstract", "Motivation") */
-.section-title {
-  font-weight: 700;                   /* Make the text bold */
-  text-transform: uppercase;          /* Convert text to all capital letters */
-  margin-top: 40px;                   /* Add 40 pixels of space above this element */
-  margin-bottom: 12px;                /* Add 12 pixels of space below this element */
-  font-size: 14px;                    /* Set font size to 14 pixels */
+main{ padding:0 7vw 100px; }
+
+.canvas-section{
+  display:grid;
+  grid-template-columns:285px minmax(0,1fr);
+  gap:52px;
+  padding:100px 0;
+  border-bottom:1px solid rgba(232,216,184,.17);
 }
 
-/* Style all paragraph elements */
-p {
-  font-size: 16px;                    /* Set font size to 16 pixels */
-  line-height: 1.6;                   /* Set space between lines to 1.6 times the font size */
-  margin-bottom: 24px;                /* Add 24 pixels of space below each paragraph */
-  color: #111;                        /* Set text color to dark gray (almost black) */
+aside{
+  position:sticky;
+  top:92px;
+  align-self:start;
+  border-left:1px solid var(--brass);
+  padding-left:24px;
 }
 
-/* Style for our interactive button */
-button {
-  background-color: #111;             /* Set button background to dark gray */
-  color: white;                       /* Set button text color to white */
-  border: none;                       /* Remove the default button border */
-  padding: 12px 24px;                 /* Add 12px top/bottom, 24px left/right spacing inside */
-  font-size: 14px;                    /* Set button text size to 14 pixels */
-  font-weight: 400;                   /* Set font weight to normal */
-  cursor: pointer;                    /* Change mouse cursor to hand when hovering over button */
-  margin-bottom: 20px;                /* Add 20 pixels of space below the button */
-  transition: background-color 0.3s;  /* Smooth color change animation (0.3 seconds) */
-  border-radius: 4px;                 /* Add slightly rounded corners to the button */
+aside span{
+  color:var(--brass-light);
+  font-size:12px;
+  letter-spacing:1.8px;
+  text-transform:uppercase;
 }
 
-/* Change button appearance when user hovers over it */
-button:hover {
-  background-color: #333;             /* Change background to lighter gray on hover */
+h2{
+  margin:22px 0 16px;
+  font-size:clamp(40px,4vw,64px);
+  line-height:.94;
+  font-weight:400;
+  letter-spacing:-1.4px;
 }
 
-/* Style for the message display area */
-#messageDisplay {
-  font-size: 16px;                    /* Set font size to 16 pixels */
-  line-height: 1.6;                   /* Set space between lines */
-  margin-top: 20px;                   /* Add 20 pixels of space above this element */
-  padding: 16px;                      /* Add 16 pixels of spacing inside the element */
-  border: 1px solid #ccc;             /* Add a light gray border around the element */
-  background-color: #f9f9f9;          /* Set background color to very light gray */
-  border-radius: 4px;                 /* Add slightly rounded corners */
-  min-height: 20px;                   /* Set minimum height so the area is visible even when empty */
+aside p,.statement p{
+  color:var(--muted);
+  line-height:1.74;
+  font-size:16px;
+}
+
+.canvas-box{
+  width:min(100%,1080px);
+  height:660px;
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(165,121,54,.92);
+  background:#101815;
+  box-shadow:
+    18px 18px 0 rgba(0,0,0,.40),
+    0 42px 130px rgba(0,0,0,.55),
+    inset 0 0 90px rgba(232,216,184,.035);
+}
+
+.canvas-box::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border:10px solid rgba(232,216,184,.028);
+  z-index:2;
+}
+
+.canvas-box canvas{
+  display:block;
+  width:100% !important;
+  height:100% !important;
+}
+
+.statement{
+  max-width:980px;
+  margin:96px 0 20px;
+  padding:38px;
+  border-left:1px solid var(--brass);
+  background:rgba(232,216,184,.045);
+}
+
+footer{
+  padding:94px 7vw;
+  background:linear-gradient(135deg,var(--paper) 0%,#D3B77D 100%);
+  color:var(--ink);
+  font-size:clamp(34px,5vw,74px);
+  line-height:1.12;
+}
+
+#credit-card{
+  position:fixed;
+  right:20px;
+  bottom:16px;
+  z-index:9999;
+  font-family:Arial,sans-serif;
+  font-size:13px;
+  color:#F1E7CF;
+  background:rgba(9,13,12,.45);
+  padding:8px 12px;
+  border:1px solid rgba(232,216,184,.18);
+  backdrop-filter:blur(8px);
+  border-radius:8px;
+}
+
+@media(max-width:880px){
+  .nav{ flex-wrap:wrap; }
+  .canvas-section{ grid-template-columns:1fr; }
+  aside{ position:relative; top:0; }
+  .canvas-box{ height:520px; }
 }
